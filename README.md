@@ -16,7 +16,7 @@ Usually, during neural ODE training RK solver with fixed Butcher tableau is used
 - robustbench (for black-box attacks)
 
 # Examples
-For CIFAR-10 and MNIST demo scripts and Jupyter notebooks, please,  check  `examples/cifar10` and `examples/cifar10` folders, respectively.
+For CIFAR-10 and MNIST demo scripts and Jupyter notebooks, please,  check  `examples/cifar10` and `examples/mnist` folders, respectively.
 
 
 # Meta ODE block
