@@ -4,7 +4,10 @@ Towards robust neural ODEs using sampling and ensembling techniques of parametri
 # Main idea
 Each *Runge-Kutta (RK)* solver with `s` stages and of `p`-th order is defined by a table of coefficients (*Butcher tableau*). For `s=p=2`, `s=p=3` and `s=p=4` all coefficient in the table can be parametrized with no more than two variables [1]. 
 <p align="center">
-<img src="examples/assets/rk2.png" width="50%"> 
+    <img src="examples/assets/rk2.png" width="55%"> 
+</p>
+<p>
+    <em>2-stage 2nd order Runge-Kutta methods, s=p=2</em>
 </p>
 
 Usually, during neural ODE training RK solver with fixed Butcher tableau is used, and only *right-hand side (RHS)* function is trained. We propose to use the whole parametric family of RK solvers to improve robustness of neural ODEs. 
