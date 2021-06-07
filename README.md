@@ -12,7 +12,9 @@ Usually, during neural ODE training RK solver with fixed Butcher tableau is used
 # Requirements
 - pytorch==1.7
 - apex (for training)
-- foolbox (modified version from the current repo, for black-box attacks)
+- foolbox (FoolBox fork that allows to pass kwargs to  fmodel.forward(), for black-box attacks)
+
+    `pip install git+https://github.com/SamplingAndEnsemblingSolvers/foolbox`
 - robustbench (for black-box attacks)
 
 # Examples
