@@ -6,7 +6,7 @@ Each *Runge-Kutta (RK)* solver with `s` stages and of `p`-th order is defined by
 <p align="center">
     <img src="examples/assets/rk2.png" width="55%"> 
 </p>
-<p>
+<p align="center">
     <em>2-stage 2nd order Runge-Kutta methods, s=p=2</em>
 </p>
 
