@@ -25,7 +25,7 @@ For CIFAR-10 and MNIST demo scripts and Jupyter notebooks, please,  check  `exam
 
 
 # Meta ODE block
-In the notebook `examples/cifar10/Evaluate model.ipynb` we show how to perform the forward pass through the Neural ODE using different regimes to propagate through the Meta ODE block, namely
+In the notebook `examples/cifar10/Initialize Meta ODE block regimes.ipynb` we show how to perform the forward pass through the Neural ODE using different regimes to propagate through the Meta ODE block, namely
 - Standalone
 - Solver sampling (switching/smoothing)
 - Solver ensembling
