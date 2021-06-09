@@ -116,8 +116,7 @@ makedirs(args.save_dir)
 if args.use_wandb:
     wandb.init(project=args.wandb_name, entity="sopa_node", anonymous="allow")
     wandb.config.update(args)
-    wandb.config.update({'u': float(args.solvers[0][-2])})  # a dirty way to extract u from the rk2 solver
-    # Path to save checkpoints locally in <args.save_dir>/<entity>/<project>/<run_id> [Julia style]
+    wandb.config.update({'u': float(args.solvers[0][-2])})
     makedirs(wandb.config.save_dir)
     makedirs(os.path.join(wandb.config.save_dir,  wandb.run.path))
 
@@ -312,15 +311,16 @@ if __name__ == "__main__":
                                                     solver_options=train_solver_options, args=args)
             adv_train_acc = adversarial_accuracy(model, train_loader, device, solvers=train_solvers,
                                                      solver_options=train_solver_options, args=args)
-
-            makedirs(os.path.join(wandb.config.save_dir, wandb.run.path))
-            save_path = os.path.join(wandb.config.save_dir, wandb.run.path, "checkpoint_{}.pth".format(itr))
-            print(save_path)
-            torch.save(model, save_path)
-            wandb.save(save_path)
-
-            wandb.log({'train_acc': train_acc,
-                       'test_acc': test_acc,
-                       'adv_test_acc': adv_test_acc,
-                       'adv_train_acc': adv_train_acc,
-                       'train_loss': train_loss['xentropy']})
+            if args.use_wandb:
+                makedirs(os.path.join(wandb.config.save_dir, wandb.run.path))
+                save_path = os.path.join(wandb.config.save_dir, wandb.run.path, "checkpoint_{}.pth".format(itr))
+                print(save_path)
+                torch.save(model, save_path)
+                wandb.save(save_path)
+                wandb.log({'train_acc': train_acc,
+                           'test_acc': test_acc,
+                           'adv_test_acc': adv_test_acc,
+                           'adv_train_acc': adv_train_acc,
+                           'train_loss': train_loss['xentropy']})
+            else:
+                print(train_acc, test_acc, adv_train_acc, adv_test_acc)
