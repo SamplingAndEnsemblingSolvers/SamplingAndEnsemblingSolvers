@@ -4,7 +4,10 @@ Towards robust neural ODEs using sampling and ensembling techniques of parametri
 # Main idea
 Each *Runge-Kutta (RK)* solver with `s` stages and of `p`-th order is defined by a table of coefficients (*Butcher tableau*). For `s=p=2`, `s=p=3` and `s=p=4` all coefficient in the table can be parametrized with no more than two variables [1]. 
 <p align="center">
-<img src="examples/assets/rk2.png" width="50%"> 
+    <img src="examples/assets/rk2.png" width="55%"> 
+</p>
+<p align="center">
+    <em>2-stage 2nd order Runge-Kutta methods, s=p=2</em>
 </p>
 
 Usually, during neural ODE training RK solver with fixed Butcher tableau is used, and only *right-hand side (RHS)* function is trained. We propose to use the whole parametric family of RK solvers to improve robustness of neural ODEs. 
@@ -12,15 +15,17 @@ Usually, during neural ODE training RK solver with fixed Butcher tableau is used
 # Requirements
 - pytorch==1.7
 - apex (for training)
-- foolbox (modified version from the current repo, for black-box attacks)
+- foolbox (FoolBox fork that allows to pass kwargs to  fmodel.forward(), for black-box attacks)
+
+    `pip install git+https://github.com/SamplingAndEnsemblingSolvers/foolbox`
 - robustbench (for black-box attacks)
 
 # Examples
-For CIFAR-10 and MNIST demo scripts and Jupyter notebooks, please,  check  `examples/cifar10` and `examples/cifar10` folders, respectively.
+For CIFAR-10 and MNIST demo scripts and Jupyter notebooks, please,  check  `examples/cifar10` and `examples/mnist` folders, respectively.
 
 
 # Meta ODE block
-In the notebook `examples/cifar10/Evaluate model.ipynb` we show how to perform the forward pass through the Neural ODE using different regimes to propagate through the Meta ODE block, namely
+In the notebook `examples/cifar10/Initialize Meta ODE block regimes.ipynb` we show how to perform the forward pass through the Neural ODE using different regimes to propagate through the Meta ODE block, namely
 - Standalone
 - Solver sampling (switching/smoothing)
 - Solver ensembling
